@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run lint:js && npm run lint:ejs",
+    "lint:js": "eslint src --ignore-path src/templates",
+    "lint:ejs": "find src/templates -type f -iname '*.ejs' -exec bash -c \"./node_modules/.bin/ejslint '{}'\" \\;",
     "dev":"nodemon src/app.js"
   },
   "keywords": [],

@@ -21,6 +21,7 @@ app.use(myConnection(mysql,{
     port: 3306,
     database: 'crudNodeMysql'
 },'single'));
+app.use(express.urlencoded({extended:false}));
 //routers
 app.use('/',customerRoutes);
 //static files
