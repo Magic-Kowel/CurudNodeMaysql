@@ -30,4 +30,14 @@ controller.delete = (req,res)=>{
         });
     });
 }
+controller.edit = (req,res)=>{
+     const { id } = req.params;
+     req.getConnection((err,conn)=>{
+        conn.query('SELECT * FROM customer WHERE id = ?',[id],(err, customer)=>{
+            res.render('customer_edit',{
+                data:customer[0]
+            });
+        })
+     });
+}
 module.exports = controller;
