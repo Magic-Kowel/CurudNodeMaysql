@@ -40,4 +40,13 @@ controller.edit = (req,res)=>{
         })
      });
 }
+controller.update = (req,res)=>{
+    const {id} = req.params;
+    const newCustomer = req.body;
+    req.getConnection((err,conn)=>{
+        conn.query('UPDATE customer set ? WHERE id = ?',[newCustomer,id],(err,rows)=>{
+            res.redirect('/');
+        });
+    });
+};
 module.exports = controller;
